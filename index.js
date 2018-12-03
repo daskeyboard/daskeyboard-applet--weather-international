@@ -275,7 +275,7 @@ class WeatherForecast extends q.DesktopApp {
           return new q.Point(chooseColor(choosePeriod(day)))
         })
       ],
-      name: `Forecast for ${this.config.cityId_LABEL}`,
+      name: `${this.config.cityId_LABEL}`,
       message: messages.join("\n"),
     });
 
