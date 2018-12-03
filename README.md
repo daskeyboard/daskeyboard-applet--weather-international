@@ -1,12 +1,12 @@
-# Q Applet Internaltional Weather Forecast
+# Q Applet: Weather - International
 
-Displays the weather forecast on a Das Keyboard Q series.
+Displays the international weather forecast on a Das Keyboard Q series.
 
 [GitHub repository](https://github.com/daskeyboard/q-applet-weather)
 
 ## Example
 
-Displays 4-day weather forecast on a Das Keyboard Q Series.
+Displays 4-day international weather forecast on a Das Keyboard Q Series.
 Each color corresponds to a weather change:  
 clear or sunny (yellow), cloudy (purple), rainy (blue), storm (red), snow (white).
 
@@ -18,10 +18,10 @@ clear or sunny (yellow), cloudy (purple), rainy (blue), storm (red), snow (white
 
 ## Installation
 
-Requires a Das Keyboard Q Series: www.daskeyboard.com/5q
+Requires a Das Keyboard Q Series: www.daskeyboard.com
 
 Installation, configuration and uninstallation of applets is done within
-the Q Desktop application (https://www.daskeyboard.io/get-started/software/)
+the Q Desktop application (https://www.daskeyboard.com/q)
 
 ## Contributions
 
