@@ -13,7 +13,6 @@ describe('loadCities', function () {
   });
 });
 
-
 describe('processCities', function () {
   it('processes the cities', async function () {
     this.timeout(1000);
@@ -504,6 +503,54 @@ describe('WeatherForecast', function () {
 
   });
 
+  describe('options', function () {
+    const app = buildApp();    
+    it('retrieves a full set of options', function () {
+      return app.options('cityId').then(options => {
+        assert.ok(options);
+        assert.ok(options.length);
+        assert(options.length > 5000);
+      })
+    });
+
+    it ('ignores whitespace search', function () {
+      return app.options('cityId', '  ').then(options => {
+        assert.ok(options);
+        assert.ok(options.length);
+        assert(options.length > 5000);
+      })
+    });
+
+    it ('returns 20 results on vague search', function () {
+      return app.options('cityId', 'a').then(options => {
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(20, options.length);
+      })
+    });
+
+    it ('returns results matching the search', function () {
+      return app.options('cityId', 'texas').then(options => {
+        console.log(JSON.stringify(options));
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(6, options.length);
+      })
+    });
+
+    it ('returns results matching the search', function () {
+      return app.options('cityId', 'austin').then(options => {
+        console.log(JSON.stringify(options));
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(1, options.length);
+        assert(options[0].key.toLowerCase().includes('austin'));
+        assert.equal('http://www.yr.no/place/United_States/Texas/Austin/forecast.xml', options[0].key);
+      })
+    });
+  })
+  
+  
   it('#run()', function () {
     const app = buildApp();    
     return app.run().then((signal) => {

@@ -22,6 +22,8 @@ const Units = Object.freeze({
   imperial: 'imperial'
 });
 
+const MAX_SEARCH_RESULTS = 20;
+
 /**
  * Loads the weather cities from an installed text file
  */
@@ -244,9 +246,19 @@ class WeatherForecast extends q.DesktopApp {
 
   async applyConfig() {}
 
-  async options() {
+  async options(fieldId, search) {
     return loadCities().then(cities => {
       return processCities(cities)
+    }).then(options => {
+      // filter the cities if needed
+      search = (search || '').trim();
+      if (search.length > 0) {
+        return options.filter(option => {
+          return option.value.toLowerCase().includes(search);
+        }).slice(0, MAX_SEARCH_RESULTS);
+      } else {
+        return options;
+      }
     }).catch(error => {
       logger.error(error);
       return [];
