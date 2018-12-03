@@ -257,7 +257,7 @@ class WeatherForecast extends q.DesktopApp {
           return option.value.toLowerCase().includes(search);
         }).slice(0, MAX_SEARCH_RESULTS);
       } else {
-        return options;
+        return options.slice(0, MAX_SEARCH_RESULTS);
       }
     }).catch(error => {
       logger.error(error);

@@ -2,6 +2,7 @@ const assert = require('assert');
 const t = require('../index');
 const forecastUrl = 'http://www.yr.no/place/Andorra/Encamp/Vila/forecast.xml';
 const cityName = 'Austin, Texas (USA)';
+const maxResults = 20;
 
 describe('loadCities', function () {
   it('returns an array of lines', async function () {
@@ -509,7 +510,7 @@ describe('WeatherForecast', function () {
       return app.options('cityId').then(options => {
         assert.ok(options);
         assert.ok(options.length);
-        assert(options.length > 5000);
+        assert.equal(maxResults, options.length);
       })
     });
 
@@ -517,7 +518,7 @@ describe('WeatherForecast', function () {
       return app.options('cityId', '  ').then(options => {
         assert.ok(options);
         assert.ok(options.length);
-        assert(options.length > 5000);
+        assert.equal(maxResults, options.length);
       })
     });
 
@@ -525,7 +526,7 @@ describe('WeatherForecast', function () {
       return app.options('cityId', 'a').then(options => {
         assert.ok(options);
         assert.ok(options.length);
-        assert.equal(20, options.length);
+        assert.equal(maxResults, options.length);
       })
     });
 
