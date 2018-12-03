@@ -1,4 +1,4 @@
-# Q Applet Weather Forecast
+# Q Applet Internaltional Weather Forecast
 
 Displays the weather forecast on a Das Keyboard Q series.
 

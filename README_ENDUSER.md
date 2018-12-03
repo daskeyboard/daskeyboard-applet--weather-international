@@ -1,7 +1,7 @@
-# Weather Forecast
+# International Weather Forecast
 
-Displays a 4-day weather forecast.
+Displays a 4-day weather forecast. Supports many cities around the world.
 
 ![Weather Forecast on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/KeyColorsLegend.png "Q Weather Forecast color legend")
 
-This applet uses the weather forecast from the [US National weather service](https://www.weather.gov/). 
+This applet uses the weather forecast from the [yr.no](https://www.yr.no/).
