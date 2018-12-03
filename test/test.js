@@ -8,7 +8,6 @@ describe('loadCities', function () {
     this.timeout(1000);
     return t.loadCities().then(lines => {
       assert.ok(lines);
-      console.log(`I have ${lines.length} lines.`);
       assert(lines.length > 1000);
     });
   });
@@ -483,9 +482,8 @@ describe('WeatherForecast', function () {
   it('#generateSignal(days)', function () {
     const app = buildApp();
     const signal = app.generateSignal(days);
-
     assert(signal);
-    assert(signal.name.includes('Forecast for'));
+    assert(signal.name.includes(cityName));
     assert(signal.message.includes("\nOvernight: Rain, 8°C\n"));
     assert(signal.message.includes("\Morning: Cloudy, 9°C\n"));
     assert(signal.message.includes("\nAfternoon: Sunny, 10°C\n"));
@@ -498,7 +496,7 @@ describe('WeatherForecast', function () {
     app.config.units = t.Units.imperial;
     const signal = app.generateSignal(days);
     assert(signal);
-    assert(signal.name.includes('Forecast for'));
+    assert(signal.name.includes(cityName));
     assert(signal.message.includes("\nOvernight: Rain, 46°F\n"));
     assert(signal.message.includes("\Morning: Cloudy, 48°F\n"));
     assert(signal.message.includes("\nAfternoon: Sunny, 50°F\n"));
@@ -509,9 +507,8 @@ describe('WeatherForecast', function () {
   it('#run()', function () {
     const app = buildApp();    
     return app.run().then((signal) => {
-      console.log(JSON.stringify(signal));
       assert.ok(signal);
-      assert(signal.name.includes('Forecast for'));
+      assert(signal.name.includes(cityName));
       assert(signal.message.includes('Overnight:'));
     });
   });

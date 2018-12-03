@@ -30,7 +30,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.7.13",
+    "daskeyboard-applet": "/Users/cory/Workspaces/metadot/daskeyboard-applet",
     "moment": "^2.22.2",
     "xml2js": "^0.4.19"
   },
