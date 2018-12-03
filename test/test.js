@@ -2,18 +2,17 @@ const assert = require('assert');
 const t = require('../index');
 const forecastUrl = 'http://www.yr.no/place/Andorra/Encamp/Vila/forecast.xml';
 const cityName = 'Austin, Texas (USA)';
+const maxResults = 20;
 
 describe('loadCities', function () {
   it('returns an array of lines', async function () {
     this.timeout(1000);
     return t.loadCities().then(lines => {
       assert.ok(lines);
-      console.log(`I have ${lines.length} lines.`);
       assert(lines.length > 1000);
     });
   });
 });
-
 
 describe('processCities', function () {
   it('processes the cities', async function () {
@@ -483,9 +482,8 @@ describe('WeatherForecast', function () {
   it('#generateSignal(days)', function () {
     const app = buildApp();
     const signal = app.generateSignal(days);
-
     assert(signal);
-    assert(signal.name.includes('Forecast for'));
+    assert(signal.name.includes(cityName));
     assert(signal.message.includes("\nOvernight: Rain, 8°C\n"));
     assert(signal.message.includes("\Morning: Cloudy, 9°C\n"));
     assert(signal.message.includes("\nAfternoon: Sunny, 10°C\n"));
@@ -498,7 +496,7 @@ describe('WeatherForecast', function () {
     app.config.units = t.Units.imperial;
     const signal = app.generateSignal(days);
     assert(signal);
-    assert(signal.name.includes('Forecast for'));
+    assert(signal.name.includes(cityName));
     assert(signal.message.includes("\nOvernight: Rain, 46°F\n"));
     assert(signal.message.includes("\Morning: Cloudy, 48°F\n"));
     assert(signal.message.includes("\nAfternoon: Sunny, 50°F\n"));
@@ -506,12 +504,59 @@ describe('WeatherForecast', function () {
 
   });
 
+  describe('options', function () {
+    const app = buildApp();    
+    it('retrieves a full set of options', function () {
+      return app.options('cityId').then(options => {
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(maxResults, options.length);
+      })
+    });
+
+    it ('ignores whitespace search', function () {
+      return app.options('cityId', '  ').then(options => {
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(maxResults, options.length);
+      })
+    });
+
+    it ('returns 20 results on vague search', function () {
+      return app.options('cityId', 'a').then(options => {
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(maxResults, options.length);
+      })
+    });
+
+    it ('returns results matching the search', function () {
+      return app.options('cityId', 'texas').then(options => {
+        console.log(JSON.stringify(options));
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(6, options.length);
+      })
+    });
+
+    it ('returns results matching the search', function () {
+      return app.options('cityId', 'austin').then(options => {
+        console.log(JSON.stringify(options));
+        assert.ok(options);
+        assert.ok(options.length);
+        assert.equal(1, options.length);
+        assert(options[0].key.toLowerCase().includes('austin'));
+        assert.equal('http://www.yr.no/place/United_States/Texas/Austin/forecast.xml', options[0].key);
+      })
+    });
+  })
+  
+  
   it('#run()', function () {
     const app = buildApp();    
     return app.run().then((signal) => {
-      console.log(JSON.stringify(signal));
       assert.ok(signal);
-      assert(signal.name.includes('Forecast for'));
+      assert(signal.name.includes(cityName));
       assert(signal.message.includes('Overnight:'));
     });
   });
