@@ -2,7 +2,7 @@
 
 Displays the international weather forecast on a Das Keyboard Q series.
 
-[GitHub repository](https://github.com/daskeyboard/q-applet-weather)
+[GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--international-weather)
 
 ## Example
 
@@ -10,7 +10,7 @@ Displays 4-day international weather forecast on a Das Keyboard Q Series.
 Each color corresponds to a weather change:  
 clear or sunny (yellow), cloudy (purple), rainy (blue), storm (red), snow (white).
 
-![Weather Forecast on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/q-applet-weather-image.png "Q Weather Forecast")
+![Weather Forecast on a Das Keybaord Q](assets/q-applet-weather-image.png "Q Weather Forecast")
 
 ## Changelog
 
