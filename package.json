@@ -18,9 +18,9 @@
   "developerRepoUrl": "hhttps://github.com/daskeyboard/daskeyboard-applet--international-weather",
   "license": "GPL",
   "licenseUrl": "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt",
-  "changelogUrl": "https://github.com/daskeyboard/daskeyboard-applet--international-weather/blob/master/CHANGELOG.md",
-  "readMeUrl": "https://github.com/daskeyboard/daskeyboard-applet--international-weather/blob/master/README.md",
-  "readMeEndUserUrl": "https://github.com/daskeyboard/daskeyboard-applet--international-weather/blob/master/README_ENDUSER.md",
+  "changelogUrl": "CHANGELOG.md",
+  "readMeUrl": "README.md",
+  "readMeEndUserUrl": "README_ENDUSER.md",
   "engines": {
     "das-keyboard-q": "3.1.x"
   },
