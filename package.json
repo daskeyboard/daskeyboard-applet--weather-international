@@ -1,5 +1,5 @@
 {
-  "name": "daskeyboard-applet--international-weather",
+  "name": "daskeyboard-applet--weather-international",
   "displayName": "Weather - International",
   "version": "1.0.0",
   "description": "Display international weather forecast on a Das Keyboard Q",
@@ -8,7 +8,7 @@
   "appUrl": "",
   "isSingleton": false,
   "videoUrl": "",
-  "icon": "assets/q-weather.png",
+  "icon": "assets/icon.png",
   "image": "assets/q-weather-image.png",
   "publisher": "Das Keyboard",
   "authorName": "Das Keyboard",
