@@ -60,8 +60,7 @@
         "help": "select a location from the list",
         "required": true,
         "order": 1,
-        "controlType": "dropdown",
-        "dynamic": true,
+        "controlType": "search",
         "options": []
       },
       {
