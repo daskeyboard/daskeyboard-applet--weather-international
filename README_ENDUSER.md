@@ -1,6 +1,6 @@
 # Weather - International
 
-Displays a 4-day international weather forecast. Supports many cities around the world.
+Displays a 4-day international weather forecast. Supports multiple cities around the world.
 
 ![Weather Forecast on a Das Keybaord Q](assets/image_readme_enduser.png "Q Weather Forecast color legend")
 

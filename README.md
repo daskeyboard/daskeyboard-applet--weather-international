@@ -6,9 +6,7 @@ Displays the international weather forecast on a Das Keyboard Q series.
 
 ## Example
 
-Displays 4-day international weather forecast on a Das Keyboard Q Series.
-Each color corresponds to a weather change:  
-clear or sunny (yellow), cloudy (purple), rainy (blue), storm (red), snow (white).
+Displays a 4-day international weather forecast. Supports multiple cities around the world.
 
 ![Weather Forecast on a Das Keybaord Q](assets/image_readme_enduser.png "Q Weather Forecast")
 
