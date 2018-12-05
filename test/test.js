@@ -21,8 +21,8 @@ describe('processCities', function () {
       const options = t.processCities(lines);
       assert.ok(options);
       assert(options.length > 1000);
-      assert.strictEqual(options[0].key, 'http://www.yr.no/place/Andorra/Encamp/Vila/forecast.xml');
-      assert.strictEqual(options[0].value, 'Vila, Encamp (Andorra)');
+      assert.strictEqual('http://www.yr.no/place/Andorra/Andorra_la_Vella/Andorra_la_Vella/forecast.xml', options[0].key);
+      assert.strictEqual('Andorra la Vella, Andorra la_Vella (Andorra)', options[0].value);
 
     });
   });
@@ -532,16 +532,14 @@ describe('WeatherForecast', function () {
 
     it ('returns results matching the search', function () {
       return app.options('cityId', 'texas').then(options => {
-        console.log(JSON.stringify(options));
         assert.ok(options);
         assert.ok(options.length);
-        assert.equal(6, options.length);
+        assert.equal(5, options.length);
       })
     });
 
     it ('returns results matching the search', function () {
       return app.options('cityId', 'austin').then(options => {
-        console.log(JSON.stringify(options));
         assert.ok(options);
         assert.ok(options.length);
         assert.equal(1, options.length);
@@ -549,10 +547,18 @@ describe('WeatherForecast', function () {
         assert.equal('http://www.yr.no/place/United_States/Texas/Austin/forecast.xml', options[0].key);
       })
     });
+
+    it('filters underscores', async function () {
+      return app.options('cityId', 'casablanca').then(options => {
+        console.log(JSON.stringify(options));
+        assert.equal(5, options.length);
+        assert.equal('Casablanca, Grand Casablanca (Morocco)', options[0].value);
+      })
+    });
   })
   
   
-  it('#run()', function () {
+  it('#run()', async function () {
     const app = buildApp();    
     return app.run().then((signal) => {
       assert.ok(signal);
@@ -570,9 +576,9 @@ describe('WeatherForecast', function () {
       const option = options[0];
       assert.ok(option.key);
       assert.ok(option.value);
-      assert(option.key.toLowerCase().includes('vila'));
+      assert(option.key.toLowerCase().includes('vella'));
       assert(option.key.toLowerCase().includes('.xml'));
-      assert(option.value.toLowerCase().includes('vila'));
+      assert(option.value.toLowerCase().includes('vella'));
     })
   })
 })

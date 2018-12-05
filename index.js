@@ -43,8 +43,11 @@ async function loadCities() {
     });
 
     reader.on('close', () => {
-      // the first line is a header
-      resolve(lines.slice(1));
+      // remove duplicates, ignoring the header on first line
+      const dedupe = lines.slice(1).sort().filter((line, i, allLines) =>{
+        return (i == 0 || allLines[i-1] != line);
+      });
+      resolve(dedupe);
     });
 
     reader.on('error', error => {
@@ -65,7 +68,7 @@ function processCities(lines) {
     const urlParts = url.split('//')[1].split('/');
     options.push({
       key: url,
-      value: `${values[3]}, ${urlParts[3]} (${values[10]})`,
+      value: `${values[3]}, ${urlParts[3].replace('_', ' ')} (${values[10]})`,
     })
   }
 
