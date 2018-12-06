@@ -24,6 +24,7 @@
   "engines": {
     "das-keyboard-q": "3.1.x"
   },
+  "das-q-runner":"3.1.0",
   "qActionUrl": "",
   "main": "index.js",
   "scripts": {
