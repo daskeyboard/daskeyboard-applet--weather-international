@@ -53,8 +53,7 @@
         "units_LABEL": "Metric"
       }
     },
-    "questions": [
-      {
+    "questions": [{
         "key": "cityId",
         "label": "Choose a city",
         "help": "select a location from the list",
@@ -70,8 +69,7 @@
         "required": true,
         "order": 2,
         "controlType": "dropdown",
-        "options": [
-          {
+        "options": [{
             "key": "metric",
             "value": "Metric"
           },
