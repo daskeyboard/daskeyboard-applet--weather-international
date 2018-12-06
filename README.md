@@ -6,9 +6,14 @@ Displays the international weather forecast on a Das Keyboard Q series.
 
 ## Example
 
-Displays a 4-day international weather forecast. Supports multiple cities around the world.
+Displays a 4-day international weather forecast.
+Supports multiple cities around the world.
+Each color corresponds to a weather change:  
+clear or sunny (yellow), cloudy (purple), rainy (blue),
+storm (red), snow (white).
 
-![Weather Forecast on a Das Keybaord Q](assets/image_readme_enduser.png "Q Weather Forecast")
+![Weather Forecast on a Das Keybaord Q](assets/image_keys.png "Q Weather Forecast")
+![Weather Forecast on a Das Keybaord Q](assets/image_legend.png "Q Weather Forecast")
 
 ## Changelog
 
@@ -20,6 +25,10 @@ Requires a Das Keyboard Q Series: www.daskeyboard.com
 
 Installation, configuration and uninstallation of applets is done within
 the Q Desktop application (https://www.daskeyboard.com/q)
+
+## Running tests
+
+    yarn test
 
 ## Contributions
 
