@@ -2,7 +2,7 @@ const assert = require('assert');
 const t = require('../index');
 const forecastUrl = 'http://www.yr.no/place/Andorra/Encamp/Vila/forecast.xml';
 const cityName = 'Austin, Texas (USA)';
-const maxResults = 20;
+const maxResults = 1000;
 
 describe('loadCities', function () {
   it('returns an array of lines', async function () {
