@@ -22,16 +22,14 @@
   "readMeUrl": "README.md",
   "readMeEndUserUrl": "README_ENDUSER.md",
   "engines": {
-    "das-keyboard-q": "3.1.x"
+    "das-keyboard-q": "3.1.0"
   },
-  "das-q-runner":"3.1.0",
-  "qActionUrl": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.9.0",
+    "daskeyboard-applet": "^2.10.4",
     "moment": "^2.22.2",
     "xml2js": "^0.4.19"
   },
