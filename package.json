@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "description": "Display international weather forecast on a Das Keyboard Q",
   "longDescription": "Be aware of the upcoming storm, ice age or heat wave coming to your place with the Q Weather applet.",
-  "officialProductName": "Weather Forecast",
+  "officialProductName": "Weather - International",
   "appUrl": "",
   "isSingleton": false,
   "videoUrl": "",
   "icon": "assets/icon.png",
-  "image": "assets/q-weather-image.png",
+  "image": "assets/image-missing.png",
   "publisher": "Das Keyboard",
   "authorName": "Das Keyboard",
   "authorUrl": "https://twitter.com/daskeyboard",
@@ -44,14 +44,6 @@
         }
       }
     },
-    "applet": {
-      "defaults": {
-        "cityId": "http://www.yr.no/place/United_States/Texas/Austin/forecast.xml",
-        "cityId_LABEL": "Austin, Texas (United States)",
-        "units": "metric",
-        "units_LABEL": "Metric"
-      }
-    },
     "questions": [
       {
         "key": "cityId",
@@ -59,6 +51,7 @@
         "help": "select a location from the list",
         "required": true,
         "order": 1,
+        "value":"http://www.yr.no/place/United_States/Texas/Austin/forecast.xml",
         "controlType": "search",
         "options": []
       },
@@ -68,6 +61,7 @@
         "help": "select a unit type",
         "required": true,
         "order": 2,
+        "value":"metric",
         "controlType": "dropdown",
         "options": [
           {
