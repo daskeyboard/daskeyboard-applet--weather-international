@@ -22,7 +22,7 @@ const Units = Object.freeze({
   imperial: 'imperial'
 });
 
-const MAX_SEARCH_RESULTS = 20;
+const MAX_SEARCH_RESULTS = 1000;
 
 /**
  * Loads the weather cities from an installed text file
@@ -68,7 +68,7 @@ function processCities(lines) {
     const urlParts = url.split('//')[1].split('/');
     options.push({
       key: url,
-      value: `${values[3]}, ${urlParts[3].replace('_', ' ')} (${values[10]})`,
+      value: `${values[3]}, ${urlParts[3].replace(/_/g, ' ')} (${values[10]})`,
     })
   }
 
