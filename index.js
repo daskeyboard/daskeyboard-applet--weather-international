@@ -44,8 +44,8 @@ async function loadCities() {
 
     reader.on('close', () => {
       // remove duplicates, ignoring the header on first line
-      const dedupe = lines.slice(1).sort().filter((line, i, allLines) =>{
-        return (i == 0 || allLines[i-1] != line);
+      const dedupe = lines.slice(1).sort().filter((line, i, allLines) => {
+        return (i == 0 || allLines[i - 1] != line);
       });
       resolve(dedupe);
     });
@@ -245,9 +245,11 @@ class WeatherForecast extends q.DesktopApp {
   constructor() {
     super();
     this.cityName = null;
+    // run every 30 min
+    this.pollingInterval = 30 * 60 * 1000;
   }
 
-  async applyConfig() {}
+  async applyConfig() { }
 
   async options(fieldId, search) {
     return loadCities().then(cities => {
