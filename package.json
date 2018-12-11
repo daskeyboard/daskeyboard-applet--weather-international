@@ -52,6 +52,7 @@
         "required": true,
         "order": 1,
         "value":"http://www.yr.no/place/United_States/Texas/Austin/forecast.xml",
+        "valueLabel": "Austin, Texas (United States)",
         "controlType": "search",
         "options": []
       },
