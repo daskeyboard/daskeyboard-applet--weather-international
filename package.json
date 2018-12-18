@@ -29,7 +29,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.10.6",
+    "daskeyboard-applet": "2.10.6",
     "moment": "^2.22.2",
     "xml2js": "^0.4.19"
   },
