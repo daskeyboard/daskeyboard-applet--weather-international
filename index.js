@@ -279,11 +279,16 @@ class WeatherForecast extends q.DesktopApp {
     const messages = [];
 
     for (let day of days) {
-      messages.push(moment(day.date).format('dddd, MMMM Do'));
-      for (let period of day.periods) {
-        messages.push(generatePeriodText(period, this.config.units));
-      }
-      messages.push("\n");
+      const dateMessage = `<div style="color: red;"><strong>${moment(day.date).format('dddd, MMMM Do')}:</strong></div>`;
+      messages.push(dateMessage);
+      messages.push(`<div>`);
+      day.periods.forEach((period, index) => {
+        messages.push(`${generatePeriodText(period, this.config.units)}`);
+        if (index !== day.periods.length - 1) {
+          messages.push('-');
+        }
+      });
+      messages.push(`</div></br>`);
     }
 
     const signal = new q.Signal({
