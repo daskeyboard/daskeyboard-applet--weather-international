@@ -1,7 +1,7 @@
 {
   "name": "daskeyboard-applet--weather-international",
   "displayName": "Weather - International",
-  "version": "1.0.2",
+  "version": "2.0.2",
   "description": "Displays weather forecast.",
   "longDescription": "Be aware of the upcoming storm, ice age or heat wave coming to your place with the Q Weather applet.",
   "officialProductName": "Weather - International",
@@ -22,7 +22,7 @@
   "readMeUrl": "README.md",
   "readMeEndUserUrl": "README_ENDUSER.md",
   "engines": {
-    "das-keyboard-q": "3.1.0"
+    "das-keyboard-q": "3.2.3"
   },
   "main": "index.js",
   "scripts": {
