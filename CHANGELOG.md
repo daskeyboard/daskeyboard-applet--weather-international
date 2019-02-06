@@ -1,3 +1,9 @@
+#### 2.0.2 (2019-02-06)
+
+##### Bug Fixes
+
+* **Search:**  Upgraded daskeyboard-q engine to include the search input fix (932369ce)
+
 #### 1.0.1 (2019-01-30)
 
 ##### New Features
