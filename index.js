@@ -257,6 +257,7 @@ class WeatherForecast extends q.DesktopApp {
     }).then(options => {
       // filter the cities if needed
       search = (search || '').trim();
+      search = unescape(search);
       if (search.length > 0) {
         return options.filter(option => {
           return option.value.toLowerCase().includes(search);
