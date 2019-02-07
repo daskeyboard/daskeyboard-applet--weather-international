@@ -1,15 +1,10 @@
-#### 2.0.2 (2019-02-07)
-
-##### Bug Fixes
-
-* **Search:**  The cities search will now work with accent (5ce5c8cc)
-
 #### 2.0.2 (2019-02-06)
 
 ##### Bug Fixes
 
 * **Search:**  
-      * Upgraded daskeyboard-q engine to include the search input fix (932369ce)
+  * Upgraded daskeyboard-q engine to include the search input fix (932369ce)
+  * The cities search will now work with accent (5ce5c8cc)
 
 #### 1.0.1 (2019-01-30)
 
