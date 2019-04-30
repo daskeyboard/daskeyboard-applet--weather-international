@@ -306,7 +306,7 @@ class WeatherForecast extends q.DesktopApp {
   }
 
   async run() {
-    logger.info("Running.");
+    logger.info("Weather international running.");
     const forecastUrl = this.config.cityId;
     const cityName = this.config.cityId_LABEL || this.config.cityId;
 
@@ -316,10 +316,16 @@ class WeatherForecast extends q.DesktopApp {
 
       return retrieveForecast(forecastUrl)
         .then(body => {
-          return processForecast(body);
+          return this.generateSignal(processForecast(body));
         })
-        .then(days => {
-          return this.generateSignal(days);
+        .catch((error) => {
+          logger.error(`Error while getting forecast data: ${error}`);
+          if(`${error.message}`.includes("getaddrinfo")){
+            return q.Signal.error(
+              'The Weather forecast International service returned an error. <b>Please check your internet connection</b>.'
+            );
+          }
+          return q.Signal.error([`The Weather forecast International service returned an error. Detail: ${error}`]);
         })
     } else {
       logger.info("No cityId configured.");
