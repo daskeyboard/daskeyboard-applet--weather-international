@@ -1,3 +1,9 @@
+# Changelog Q Applet Weather Forecast
+
+## Version 2.0.3 - Arpil 30, 2019
+
+Handled internet connection error
+
 #### 2.0.2 (2019-02-06)
 
 ##### Bug Fixes
@@ -15,8 +21,6 @@
 ##### Other Changes
 
 * **package:**  homogenized and updated description. (f304aff0)
-
-# Changelog Q Applet Weather Forecast
 
 ## Version 1.0.0 - October 30, 2018
 
