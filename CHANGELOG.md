@@ -1,5 +1,9 @@
 # Changelog Q Applet Weather Forecast
 
+## Version 2.0.4 - May 15, 2019
+
+Removed internet connection error
+
 ## Version 2.0.3 - Arpil 30, 2019
 
 Handled internet connection error
