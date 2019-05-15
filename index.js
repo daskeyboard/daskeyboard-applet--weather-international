@@ -321,11 +321,13 @@ class WeatherForecast extends q.DesktopApp {
         .catch((error) => {
           logger.error(`Error while getting forecast data: ${error}`);
           if(`${error.message}`.includes("getaddrinfo")){
-            return q.Signal.error(
-              'The Weather forecast International service returned an error. <b>Please check your internet connection</b>.'
-            );
+            // Do not send signal when getting internet connection error
+            // return q.Signal.error(
+            //   'The Weather forecast International service returned an error. <b>Please check your internet connection</b>.'
+            // );
+          }else{
+            return q.Signal.error([`The Weather forecast International service returned an error. Detail: ${error}`]);
           }
-          return q.Signal.error([`The Weather forecast International service returned an error. Detail: ${error}`]);
         })
     } else {
       logger.info("No cityId configured.");
