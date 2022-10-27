@@ -30,6 +30,23 @@ the Q Desktop application (<https://www.daskeyboard.com/q>)
 
 - `yarn test`
 
+## Development
+
+### Das Keyboard Q Applets
+
+https://www.daskeyboard.io/applet-development/
+
+### yr.no
+
+https://developer.yr.no/doc/GettingStarted/
+
+### Run from command line
+
+- `node index.js dev { <configuration-data> } eg:`
+
+- `node index.js dev '{ "authorization": { "apiKey": "" }, "applet": { "user": { "cityId": "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=52.060669&lon=4.494025", "cityId_LABEL": "Zoetermeer, South Holland (Netherlands)", "units": "metric", "units_LABEL": "Metric" }, "defaults": {} }, "geometry": { "width": 4, "height": 1, "origin": { "x": 3, "y": 0 } } }'`
+
+
 ## Contributions
 
 Pull requests welcome.
