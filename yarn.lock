@@ -325,15 +325,15 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-daskeyboard-applet@2.11.3:
-  version "2.11.3"
-  resolved "https://registry.yarnpkg.com/daskeyboard-applet/-/daskeyboard-applet-2.11.3.tgz#53fa71b81264148d5ab018a54424924bd13898b3"
-  integrity sha512-un5uL9QnCBlaLqhF5SJsY2o0F4KJJeBonP0sxdySsXfoLgRNYS2Ywz539f2647992bqVp7GtVDSCY6LsTuBtiw==
+daskeyboard-applet@^2.11.3:
+  version "2.11.5"
+  resolved "https://registry.yarnpkg.com/daskeyboard-applet/-/daskeyboard-applet-2.11.5.tgz#66ef6df07e0de3ad86e38f6e96bb53b3e3cb2d44"
+  integrity sha512-mvhDIu9OQOXUotC94++k8TJBSN/teHTcA+VOv3QNiTq/KfmxLAYxlTl7YmeyAk8+dJqaNo1jB9/cDuHBocjk2w==
   dependencies:
     moment "^2.22.2"
     node-localstorage "^1.3.1"
     request "^2.88.0"
-    request-promise "^4.2.2"
+    request-promise "^4.2.6"
     winston "^3.1.0"
 
 debug@4.3.1:
@@ -985,7 +985,7 @@ request-promise-core@1.1.4:
   dependencies:
     lodash "^4.17.19"
 
-request-promise@^4.2.2:
+request-promise@^4.2.6:
   version "4.2.6"
   resolved "https://registry.yarnpkg.com/request-promise/-/request-promise-4.2.6.tgz#7e7e5b9578630e6f598e3813c0f8eb342a27f0a2"
   integrity sha512-HCHI3DJJUakkOr8fNoCc73E5nU5bqITjOYFMDrKHYOXWXrgD/SBaC7LjwuPymUprRyuF06UK7hd/lMHkmUXglQ==

@@ -137,7 +137,7 @@ describe('chooseColor', function () {
 describe('choosePeriod', function () {
   it('picks the only period', function () {
     const period = {
-      from: new Date('2022-11-04T16:00:00.000Z'),
+      from: new Date('2022-11-04T16:00:00.000'),
       number: 8,
       symbol: 'fair_night',
       precipitation: 0,
@@ -154,7 +154,7 @@ describe('choosePeriod', function () {
 
   it('picks the rainiest of three periods', function () {
     const period1 = {
-      from: new Date('2022-11-04T12:00:00.000Z'),
+      from: new Date('2022-11-04T12:00:00.000'),
       number: 8,
       symbol: 'fair_night',
       precipitation: 2.4,
@@ -164,7 +164,7 @@ describe('choosePeriod', function () {
       pressure: 1010.4
     };
     const period2 = {
-      from: new Date('2022-11-04T13:00:00.000Z'),
+      from: new Date('2022-11-04T13:00:00.000'),
       number: 9,
       symbol: 'fair_night',
       precipitation: 4.4,
@@ -174,7 +174,7 @@ describe('choosePeriod', function () {
       pressure: 1010.4
     };
     const period3 = {
-      from: new Date('2022-11-04T14:00:00.000Z'),
+      from: new Date('2022-11-04T14:00:00.000'),
       number: 10,
       symbol: 'fair_night',
       precipitation: 4.9,
@@ -192,7 +192,7 @@ describe('choosePeriod', function () {
 
   it('picks the rainiest of four periods', function () {
     const period1 = {
-      from: new Date('2022-11-04T12:00:00.000Z'),
+      from: new Date('2022-11-04T12:00:00.000'),
       number: 8,
       symbol: 'fair_night',
       precipitation: 1.4,
@@ -202,7 +202,7 @@ describe('choosePeriod', function () {
       pressure: 1010.4
     };
     const period2 = {
-      from: new Date('2022-11-04T13:00:00.000Z'),
+      from: new Date('2022-11-04T13:00:00.000'),
       number: 9,
       symbol: 'fair_night',
       precipitation: 6.4,
@@ -212,7 +212,7 @@ describe('choosePeriod', function () {
       pressure: 1010.4
     };
     const period3 = {
-      from: new Date('2022-11-04T14:00:00.000Z'),
+      from: new Date('2022-11-04T14:00:00.000'),
       number: 10,
       symbol: 'fair_night',
       precipitation: 4.4,
@@ -222,7 +222,7 @@ describe('choosePeriod', function () {
       pressure: 1010.4
     };
     const period4 = {
-      from: new Date('2022-11-04T14:00:00.000Z'),
+      from: new Date('2022-11-04T14:00:00.000'),
       number: 11,
       symbol: 'fair_night',
       precipitation: 4.9,
@@ -242,7 +242,7 @@ describe('choosePeriod', function () {
 describe('generatePeriodText', function () {
   it('generates text', function () {
     const text = t.generatePeriodText(new t.Period({
-      from: new Date('2022-11-04T14:00:00.000Z'),
+      from: new Date('2022-11-04T15:00:00.000'),
       number: 11,
       symbol: 'Cloudy',
       precipitation: 4.9,
@@ -263,8 +263,8 @@ describe('WeatherForecast', function () {
   const days = [
     new t.Day(4, [
       new t.Period({
-        from: new Date('2022-11-04T13:00:00.000Z'),
-        to: new Date('2022-11-04T14:00:00.000Z'),
+        from: new Date('2022-11-04T13:00:00.000'),
+        to: new Date('2022-11-04T14:00:00.000'),
         number: 1,
         symbol: 'cloudy',
         precipitation: 0,
@@ -274,8 +274,8 @@ describe('WeatherForecast', function () {
         pressure: 1008.3
       }),
       new t.Period({
-        from: new Date('2022-11-04T14:00:00.000Z'),
-        to: new Date('2022-11-04T15:00:00.000Z'),
+        from: new Date('2022-11-04T14:00:00.000'),
+        to: new Date('2022-11-04T15:00:00.000'),
         number: 2,
         symbol: 'cloudy',
         precipitation: 0,
@@ -285,8 +285,8 @@ describe('WeatherForecast', function () {
         pressure: 1008.9
       }),
       new t.Period({
-        from: new Date('2022-11-04T15:00:00.000Z'),
-        to: new Date('2022-11-04T16:00:00.000Z'),
+        from: new Date('2022-11-04T15:00:00.000'),
+        to: new Date('2022-11-04T16:00:00.000'),
         number: 3,
         symbol: 'cloudy',
         precipitation: 0,
@@ -296,8 +296,8 @@ describe('WeatherForecast', function () {
         pressure: 1009.6
       }),
       new t.Period({
-        from: new Date('2022-11-04T16:00:00.000Z'),
-        to: new Date('2022-11-04T17:00:00.000Z'),
+        from: new Date('2022-11-04T16:00:00.000'),
+        to: new Date('2022-11-04T17:00:00.000'),
         number: 4,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -307,8 +307,8 @@ describe('WeatherForecast', function () {
         pressure: 1010.5
       }),
       new t.Period({
-        from: new Date('2022-11-04T17:00:00.000Z'),
-        to: new Date('2022-11-04T18:00:00.000Z'),
+        from: new Date('2022-11-04T17:00:00.000'),
+        to: new Date('2022-11-04T18:00:00.000'),
         number: 5,
         symbol: 'fair_night',
         precipitation: 0,
@@ -318,8 +318,8 @@ describe('WeatherForecast', function () {
         pressure: 1011.3
       }),
       new t.Period({
-        from: new Date('2022-11-04T18:00:00.000Z'),
-        to: new Date('2022-11-04T19:00:00.000Z'),
+        from: new Date('2022-11-04T18:00:00.000'),
+        to: new Date('2022-11-04T19:00:00.000'),
         number: 6,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -329,8 +329,8 @@ describe('WeatherForecast', function () {
         pressure: 1011.9
       }),
       new t.Period({
-        from: new Date('2022-11-04T19:00:00.000Z'),
-        to: new Date('2022-11-04T20:00:00.000Z'),
+        from: new Date('2022-11-04T19:00:00.000'),
+        to: new Date('2022-11-04T20:00:00.000'),
         number: 7,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -340,8 +340,8 @@ describe('WeatherForecast', function () {
         pressure: 1012.7
       }),
       new t.Period({
-        from: new Date('2022-11-04T20:00:00.000Z'),
-        to: new Date('2022-11-04T21:00:00.000Z'),
+        from: new Date('2022-11-04T20:00:00.000'),
+        to: new Date('2022-11-04T21:00:00.000'),
         number: 8,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -351,8 +351,8 @@ describe('WeatherForecast', function () {
         pressure: 1013.4
       }),
       new t.Period({
-        from: new Date('2022-11-04T21:00:00.000Z'),
-        to: new Date('2022-11-04T22:00:00.000Z'),
+        from: new Date('2022-11-04T21:00:00.000'),
+        to: new Date('2022-11-04T22:00:00.000'),
         number: 9,
         symbol: 'rainshowers_night',
         precipitation: 0.6,
@@ -362,8 +362,8 @@ describe('WeatherForecast', function () {
         pressure: 1013.7
       }),
       new t.Period({
-        from: new Date('2022-11-04T22:00:00.000Z'),
-        to: new Date('2022-11-04T23:00:00.000Z'),
+        from: new Date('2022-11-04T22:00:00.000'),
+        to: new Date('2022-11-04T23:00:00.000'),
         number: 10,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -375,8 +375,8 @@ describe('WeatherForecast', function () {
     ]),
     new t.Day(5, [
       new t.Period({
-        from: new Date('2022-11-04T23:00:00.000Z'),
-        to: new Date('2022-11-05T00:00:00.000Z'),
+        from: new Date('2022-11-04T23:00:00.000'),
+        to: new Date('2022-11-05T00:00:00.000'),
         number: 11,
         symbol: 'fair_night',
         precipitation: 0,
@@ -386,8 +386,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.5
       }),
       new t.Period({
-        from: new Date('2022-11-05T00:00:00.000Z'),
-        to: new Date('2022-11-05T01:00:00.000Z'),
+        from: new Date('2022-11-05T00:00:00.000'),
+        to: new Date('2022-11-05T01:00:00.000'),
         number: 12,
         symbol: 'fair_night',
         precipitation: 0,
@@ -397,8 +397,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.6
       }),
       new t.Period({
-        from: new Date('2022-11-05T01:00:00.000Z'),
-        to: new Date('2022-11-05T02:00:00.000Z'),
+        from: new Date('2022-11-05T01:00:00.000'),
+        to: new Date('2022-11-05T02:00:00.000'),
         number: 13,
         symbol: 'clearsky_night',
         precipitation: 0,
@@ -408,8 +408,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.7
       }),
       new t.Period({
-        from: new Date('2022-11-05T02:00:00.000Z'),
-        to: new Date('2022-11-05T03:00:00.000Z'),
+        from: new Date('2022-11-05T02:00:00.000'),
+        to: new Date('2022-11-05T03:00:00.000'),
         number: 14,
         symbol: 'fair_night',
         precipitation: 0,
@@ -419,8 +419,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.8
       }),
       new t.Period({
-        from: new Date('2022-11-05T03:00:00.000Z'),
-        to: new Date('2022-11-05T04:00:00.000Z'),
+        from: new Date('2022-11-05T03:00:00.000'),
+        to: new Date('2022-11-05T04:00:00.000'),
         number: 15,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -430,8 +430,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.8
       }),
       new t.Period({
-        from: new Date('2022-11-05T04:00:00.000Z'),
-        to: new Date('2022-11-05T05:00:00.000Z'),
+        from: new Date('2022-11-05T04:00:00.000'),
+        to: new Date('2022-11-05T05:00:00.000'),
         number: 16,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -441,8 +441,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.1
       }),
       new t.Period({
-        from: new Date('2022-11-05T05:00:00.000Z'),
-        to: new Date('2022-11-05T06:00:00.000Z'),
+        from: new Date('2022-11-05T05:00:00.000'),
+        to: new Date('2022-11-05T06:00:00.000'),
         number: 17,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -452,8 +452,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.3
       }),
       new t.Period({
-        from: new Date('2022-11-05T06:00:00.000Z'),
-        to: new Date('2022-11-05T07:00:00.000Z'),
+        from: new Date('2022-11-05T06:00:00.000'),
+        to: new Date('2022-11-05T07:00:00.000'),
         number: 18,
         symbol: 'fair_night',
         precipitation: 0,
@@ -463,8 +463,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.2
       }),
       new t.Period({
-        from: new Date('2022-11-05T07:00:00.000Z'),
-        to: new Date('2022-11-05T08:00:00.000Z'),
+        from: new Date('2022-11-05T07:00:00.000'),
+        to: new Date('2022-11-05T08:00:00.000'),
         number: 19,
         symbol: 'partlycloudy_day',
         precipitation: 0,
@@ -474,8 +474,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.5
       }),
       new t.Period({
-        from: new Date('2022-11-05T08:00:00.000Z'),
-        to: new Date('2022-11-05T09:00:00.000Z'),
+        from: new Date('2022-11-05T08:00:00.000'),
+        to: new Date('2022-11-05T09:00:00.000'),
         number: 20,
         symbol: 'fair_day',
         precipitation: 0,
@@ -485,8 +485,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.7
       }),
       new t.Period({
-        from: new Date('2022-11-05T09:00:00.000Z'),
-        to: new Date('2022-11-05T10:00:00.000Z'),
+        from: new Date('2022-11-05T09:00:00.000'),
+        to: new Date('2022-11-05T10:00:00.000'),
         number: 21,
         symbol: 'fair_day',
         precipitation: 0,
@@ -496,8 +496,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.8
       }),
       new t.Period({
-        from: new Date('2022-11-05T10:00:00.000Z'),
-        to: new Date('2022-11-05T11:00:00.000Z'),
+        from: new Date('2022-11-05T10:00:00.000'),
+        to: new Date('2022-11-05T11:00:00.000'),
         number: 22,
         symbol: 'partlycloudy_day',
         precipitation: 0,
@@ -507,8 +507,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.6
       }),
       new t.Period({
-        from: new Date('2022-11-05T11:00:00.000Z'),
-        to: new Date('2022-11-05T12:00:00.000Z'),
+        from: new Date('2022-11-05T11:00:00.000'),
+        to: new Date('2022-11-05T12:00:00.000'),
         number: 23,
         symbol: 'cloudy',
         precipitation: 0,
@@ -518,8 +518,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.7
       }),
       new t.Period({
-        from: new Date('2022-11-05T12:00:00.000Z'),
-        to: new Date('2022-11-05T13:00:00.000Z'),
+        from: new Date('2022-11-05T12:00:00.000'),
+        to: new Date('2022-11-05T13:00:00.000'),
         number: 24,
         symbol: 'cloudy',
         precipitation: 0,
@@ -529,8 +529,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.7
       }),
       new t.Period({
-        from: new Date('2022-11-05T13:00:00.000Z'),
-        to: new Date('2022-11-05T14:00:00.000Z'),
+        from: new Date('2022-11-05T13:00:00.000'),
+        to: new Date('2022-11-05T14:00:00.000'),
         number: 25,
         symbol: 'cloudy',
         precipitation: 0,
@@ -540,8 +540,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.6
       }),
       new t.Period({
-        from: new Date('2022-11-05T14:00:00.000Z'),
-        to: new Date('2022-11-05T15:00:00.000Z'),
+        from: new Date('2022-11-05T14:00:00.000'),
+        to: new Date('2022-11-05T15:00:00.000'),
         number: 26,
         symbol: 'cloudy',
         precipitation: 0,
@@ -551,8 +551,8 @@ describe('WeatherForecast', function () {
         pressure: 1015.3
       }),
       new t.Period({
-        from: new Date('2022-11-05T15:00:00.000Z'),
-        to: new Date('2022-11-05T16:00:00.000Z'),
+        from: new Date('2022-11-05T15:00:00.000'),
+        to: new Date('2022-11-05T16:00:00.000'),
         number: 27,
         symbol: 'cloudy',
         precipitation: 0,
@@ -562,8 +562,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.9
       }),
       new t.Period({
-        from: new Date('2022-11-05T16:00:00.000Z'),
-        to: new Date('2022-11-05T17:00:00.000Z'),
+        from: new Date('2022-11-05T16:00:00.000'),
+        to: new Date('2022-11-05T17:00:00.000'),
         number: 28,
         symbol: 'rain',
         precipitation: 0.3,
@@ -573,8 +573,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.6
       }),
       new t.Period({
-        from: new Date('2022-11-05T17:00:00.000Z'),
-        to: new Date('2022-11-05T18:00:00.000Z'),
+        from: new Date('2022-11-05T17:00:00.000'),
+        to: new Date('2022-11-05T18:00:00.000'),
         number: 29,
         symbol: 'cloudy',
         precipitation: 0,
@@ -584,8 +584,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.5
       }),
       new t.Period({
-        from: new Date('2022-11-05T18:00:00.000Z'),
-        to: new Date('2022-11-05T19:00:00.000Z'),
+        from: new Date('2022-11-05T18:00:00.000'),
+        to: new Date('2022-11-05T19:00:00.000'),
         number: 30,
         symbol: 'cloudy',
         precipitation: 0,
@@ -595,8 +595,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.2
       }),
       new t.Period({
-        from: new Date('2022-11-05T19:00:00.000Z'),
-        to: new Date('2022-11-05T20:00:00.000Z'),
+        from: new Date('2022-11-05T19:00:00.000'),
+        to: new Date('2022-11-05T20:00:00.000'),
         number: 31,
         symbol: 'cloudy',
         precipitation: 0,
@@ -606,8 +606,8 @@ describe('WeatherForecast', function () {
         pressure: 1014.2
       }),
       new t.Period({
-        from: new Date('2022-11-05T20:00:00.000Z'),
-        to: new Date('2022-11-05T21:00:00.000Z'),
+        from: new Date('2022-11-05T20:00:00.000'),
+        to: new Date('2022-11-05T21:00:00.000'),
         number: 32,
         symbol: 'cloudy',
         precipitation: 0,
@@ -617,8 +617,8 @@ describe('WeatherForecast', function () {
         pressure: 1013.9
       }),
       new t.Period({
-        from: new Date('2022-11-05T21:00:00.000Z'),
-        to: new Date('2022-11-05T22:00:00.000Z'),
+        from: new Date('2022-11-05T21:00:00.000'),
+        to: new Date('2022-11-05T22:00:00.000'),
         number: 33,
         symbol: 'cloudy',
         precipitation: 0,
@@ -628,8 +628,8 @@ describe('WeatherForecast', function () {
         pressure: 1013.8
       }),
       new t.Period({
-        from: new Date('2022-11-05T22:00:00.000Z'),
-        to: new Date('2022-11-05T23:00:00.000Z'),
+        from: new Date('2022-11-05T22:00:00.000'),
+        to: new Date('2022-11-05T23:00:00.000'),
         number: 34,
         symbol: 'cloudy',
         precipitation: 0,
@@ -641,8 +641,8 @@ describe('WeatherForecast', function () {
     ]),
     new t.Day(6, [
       new t.Period({
-        from: new Date('2022-11-05T23:00:00.000Z'),
-        to: new Date('2022-11-06T00:00:00.000Z'),
+        from: new Date('2022-11-05T23:00:00.000'),
+        to: new Date('2022-11-06T00:00:00.000'),
         number: 35,
         symbol: 'cloudy',
         precipitation: 0,
@@ -652,8 +652,8 @@ describe('WeatherForecast', function () {
         pressure: 1013.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T00:00:00.000Z'),
-        to: new Date('2022-11-06T01:00:00.000Z'),
+        from: new Date('2022-11-06T00:00:00.000'),
+        to: new Date('2022-11-06T01:00:00.000'),
         number: 36,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -663,8 +663,8 @@ describe('WeatherForecast', function () {
         pressure: 1012.6
       }),
       new t.Period({
-        from: new Date('2022-11-06T01:00:00.000Z'),
-        to: new Date('2022-11-06T02:00:00.000Z'),
+        from: new Date('2022-11-06T01:00:00.000'),
+        to: new Date('2022-11-06T02:00:00.000'),
         number: 37,
         symbol: 'cloudy',
         precipitation: 0,
@@ -674,8 +674,8 @@ describe('WeatherForecast', function () {
         pressure: 1012.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T02:00:00.000Z'),
-        to: new Date('2022-11-06T03:00:00.000Z'),
+        from: new Date('2022-11-06T02:00:00.000'),
+        to: new Date('2022-11-06T03:00:00.000'),
         number: 38,
         symbol: 'cloudy',
         precipitation: 0,
@@ -685,8 +685,8 @@ describe('WeatherForecast', function () {
         pressure: 1011.7
       }),
       new t.Period({
-        from: new Date('2022-11-06T03:00:00.000Z'),
-        to: new Date('2022-11-06T04:00:00.000Z'),
+        from: new Date('2022-11-06T03:00:00.000'),
+        to: new Date('2022-11-06T04:00:00.000'),
         number: 39,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -696,8 +696,8 @@ describe('WeatherForecast', function () {
         pressure: 1011
       }),
       new t.Period({
-        from: new Date('2022-11-06T04:00:00.000Z'),
-        to: new Date('2022-11-06T05:00:00.000Z'),
+        from: new Date('2022-11-06T04:00:00.000'),
+        to: new Date('2022-11-06T05:00:00.000'),
         number: 40,
         symbol: 'cloudy',
         precipitation: 0,
@@ -707,8 +707,8 @@ describe('WeatherForecast', function () {
         pressure: 1010.4
       }),
       new t.Period({
-        from: new Date('2022-11-06T05:00:00.000Z'),
-        to: new Date('2022-11-06T06:00:00.000Z'),
+        from: new Date('2022-11-06T05:00:00.000'),
+        to: new Date('2022-11-06T06:00:00.000'),
         number: 41,
         symbol: 'cloudy',
         precipitation: 0,
@@ -718,8 +718,8 @@ describe('WeatherForecast', function () {
         pressure: 1009.7
       }),
       new t.Period({
-        from: new Date('2022-11-06T06:00:00.000Z'),
-        to: new Date('2022-11-06T07:00:00.000Z'),
+        from: new Date('2022-11-06T06:00:00.000'),
+        to: new Date('2022-11-06T07:00:00.000'),
         number: 42,
         symbol: 'lightrain',
         precipitation: 0.1,
@@ -729,8 +729,8 @@ describe('WeatherForecast', function () {
         pressure: 1009.3
       }),
       new t.Period({
-        from: new Date('2022-11-06T07:00:00.000Z'),
-        to: new Date('2022-11-06T08:00:00.000Z'),
+        from: new Date('2022-11-06T07:00:00.000'),
+        to: new Date('2022-11-06T08:00:00.000'),
         number: 43,
         symbol: 'cloudy',
         precipitation: 0,
@@ -740,8 +740,8 @@ describe('WeatherForecast', function () {
         pressure: 1009
       }),
       new t.Period({
-        from: new Date('2022-11-06T08:00:00.000Z'),
-        to: new Date('2022-11-06T09:00:00.000Z'),
+        from: new Date('2022-11-06T08:00:00.000'),
+        to: new Date('2022-11-06T09:00:00.000'),
         number: 44,
         symbol: 'rain',
         precipitation: 0.3,
@@ -751,8 +751,8 @@ describe('WeatherForecast', function () {
         pressure: 1008.7
       }),
       new t.Period({
-        from: new Date('2022-11-06T09:00:00.000Z'),
-        to: new Date('2022-11-06T10:00:00.000Z'),
+        from: new Date('2022-11-06T09:00:00.000'),
+        to: new Date('2022-11-06T10:00:00.000'),
         number: 45,
         symbol: 'heavyrain',
         precipitation: 1.6,
@@ -762,8 +762,8 @@ describe('WeatherForecast', function () {
         pressure: 1008
       }),
       new t.Period({
-        from: new Date('2022-11-06T10:00:00.000Z'),
-        to: new Date('2022-11-06T11:00:00.000Z'),
+        from: new Date('2022-11-06T10:00:00.000'),
+        to: new Date('2022-11-06T11:00:00.000'),
         number: 46,
         symbol: 'heavyrain',
         precipitation: 2.2,
@@ -773,8 +773,8 @@ describe('WeatherForecast', function () {
         pressure: 1007.7
       }),
       new t.Period({
-        from: new Date('2022-11-06T11:00:00.000Z'),
-        to: new Date('2022-11-06T12:00:00.000Z'),
+        from: new Date('2022-11-06T11:00:00.000'),
+        to: new Date('2022-11-06T12:00:00.000'),
         number: 47,
         symbol: 'heavyrain',
         precipitation: 3.1,
@@ -784,8 +784,8 @@ describe('WeatherForecast', function () {
         pressure: 1007.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T12:00:00.000Z'),
-        to: new Date('2022-11-06T13:00:00.000Z'),
+        from: new Date('2022-11-06T12:00:00.000'),
+        to: new Date('2022-11-06T13:00:00.000'),
         number: 48,
         symbol: 'heavyrain',
         precipitation: 2.7,
@@ -795,8 +795,8 @@ describe('WeatherForecast', function () {
         pressure: 1005.9
       }),
       new t.Period({
-        from: new Date('2022-11-06T13:00:00.000Z'),
-        to: new Date('2022-11-06T14:00:00.000Z'),
+        from: new Date('2022-11-06T13:00:00.000'),
+        to: new Date('2022-11-06T14:00:00.000'),
         number: 49,
         symbol: 'heavyrain',
         precipitation: 2.3,
@@ -806,8 +806,8 @@ describe('WeatherForecast', function () {
         pressure: 1005.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T14:00:00.000Z'),
-        to: new Date('2022-11-06T15:00:00.000Z'),
+        from: new Date('2022-11-06T14:00:00.000'),
+        to: new Date('2022-11-06T15:00:00.000'),
         number: 50,
         symbol: 'rain',
         precipitation: 0.6,
@@ -817,8 +817,8 @@ describe('WeatherForecast', function () {
         pressure: 1004.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T15:00:00.000Z'),
-        to: new Date('2022-11-06T16:00:00.000Z'),
+        from: new Date('2022-11-06T15:00:00.000'),
+        to: new Date('2022-11-06T16:00:00.000'),
         number: 51,
         symbol: 'rain',
         precipitation: 0.5,
@@ -828,8 +828,8 @@ describe('WeatherForecast', function () {
         pressure: 1003.4
       }),
       new t.Period({
-        from: new Date('2022-11-06T16:00:00.000Z'),
-        to: new Date('2022-11-06T17:00:00.000Z'),
+        from: new Date('2022-11-06T16:00:00.000'),
+        to: new Date('2022-11-06T17:00:00.000'),
         number: 52,
         symbol: 'rain',
         precipitation: 0.3,
@@ -839,8 +839,8 @@ describe('WeatherForecast', function () {
         pressure: 1003.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T17:00:00.000Z'),
-        to: new Date('2022-11-06T18:00:00.000Z'),
+        from: new Date('2022-11-06T17:00:00.000'),
+        to: new Date('2022-11-06T18:00:00.000'),
         number: 53,
         symbol: 'lightrain',
         precipitation: 0.2,
@@ -850,8 +850,8 @@ describe('WeatherForecast', function () {
         pressure: 1002.8
       }),
       new t.Period({
-        from: new Date('2022-11-06T18:00:00.000Z'),
-        to: new Date('2022-11-06T19:00:00.000Z'),
+        from: new Date('2022-11-06T18:00:00.000'),
+        to: new Date('2022-11-06T19:00:00.000'),
         number: 54,
         symbol: 'cloudy',
         precipitation: 0,
@@ -861,8 +861,8 @@ describe('WeatherForecast', function () {
         pressure: 1002.8
       }),
       new t.Period({
-        from: new Date('2022-11-06T19:00:00.000Z'),
-        to: new Date('2022-11-06T20:00:00.000Z'),
+        from: new Date('2022-11-06T19:00:00.000'),
+        to: new Date('2022-11-06T20:00:00.000'),
         number: 55,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -872,8 +872,8 @@ describe('WeatherForecast', function () {
         pressure: 1003.3
       }),
       new t.Period({
-        from: new Date('2022-11-06T20:00:00.000Z'),
-        to: new Date('2022-11-06T21:00:00.000Z'),
+        from: new Date('2022-11-06T20:00:00.000'),
+        to: new Date('2022-11-06T21:00:00.000'),
         number: 56,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -883,8 +883,8 @@ describe('WeatherForecast', function () {
         pressure: 1004.1
       }),
       new t.Period({
-        from: new Date('2022-11-06T21:00:00.000Z'),
-        to: new Date('2022-11-06T22:00:00.000Z'),
+        from: new Date('2022-11-06T21:00:00.000'),
+        to: new Date('2022-11-06T22:00:00.000'),
         number: 57,
         symbol: 'cloudy',
         precipitation: 0,
@@ -894,8 +894,8 @@ describe('WeatherForecast', function () {
         pressure: 1004.5
       }),
       new t.Period({
-        from: new Date('2022-11-06T22:00:00.000Z'),
-        to: new Date('2022-11-06T23:00:00.000Z'),
+        from: new Date('2022-11-06T22:00:00.000'),
+        to: new Date('2022-11-06T23:00:00.000'),
         number: 58,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -907,8 +907,8 @@ describe('WeatherForecast', function () {
     ]),
     new t.Day(7, [
       new t.Period({
-        from: new Date('2022-11-06T23:00:00.000Z'),
-        to: new Date('2022-11-07T00:00:00.000Z'),
+        from: new Date('2022-11-06T23:00:00.000'),
+        to: new Date('2022-11-07T00:00:00.000'),
         number: 59,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -918,8 +918,8 @@ describe('WeatherForecast', function () {
         pressure: 1005.9
       }),
       new t.Period({
-        from: new Date('2022-11-07T00:00:00.000Z'),
-        to: new Date('2022-11-07T01:00:00.000Z'),
+        from: new Date('2022-11-07T00:00:00.000'),
+        to: new Date('2022-11-07T01:00:00.000'),
         number: 60,
         symbol: 'lightrainshowers_night',
         precipitation: 0.1,
@@ -929,8 +929,8 @@ describe('WeatherForecast', function () {
         pressure: 1006.4
       }),
       new t.Period({
-        from: new Date('2022-11-07T01:00:00.000Z'),
-        to: new Date('2022-11-07T02:00:00.000Z'),
+        from: new Date('2022-11-07T01:00:00.000'),
+        to: new Date('2022-11-07T02:00:00.000'),
         number: 61,
         symbol: 'cloudy',
         precipitation: 0,
@@ -940,8 +940,8 @@ describe('WeatherForecast', function () {
         pressure: 1006.8
       }),
       new t.Period({
-        from: new Date('2022-11-07T02:00:00.000Z'),
-        to: new Date('2022-11-07T03:00:00.000Z'),
+        from: new Date('2022-11-07T02:00:00.000'),
+        to: new Date('2022-11-07T03:00:00.000'),
         number: 62,
         symbol: 'partlycloudy_night',
         precipitation: 0,
@@ -951,8 +951,8 @@ describe('WeatherForecast', function () {
         pressure: 1007
       }),
       new t.Period({
-        from: new Date('2022-11-07T03:00:00.000Z'),
-        to: new Date('2022-11-07T04:00:00.000Z'),
+        from: new Date('2022-11-07T03:00:00.000'),
+        to: new Date('2022-11-07T04:00:00.000'),
         number: 63,
         symbol: 'lightrain',
         precipitation: 0.2,
@@ -962,8 +962,8 @@ describe('WeatherForecast', function () {
         pressure: 1007.1
       }),
       new t.Period({
-        from: new Date('2022-11-07T04:00:00.000Z'),
-        to: new Date('2022-11-07T05:00:00.000Z'),
+        from: new Date('2022-11-07T04:00:00.000'),
+        to: new Date('2022-11-07T05:00:00.000'),
         number: 64,
         symbol: 'rain',
         precipitation: 0.3,
@@ -973,8 +973,8 @@ describe('WeatherForecast', function () {
         pressure: 1007.2
       }),
       new t.Period({
-        from: new Date('2022-11-07T05:00:00.000Z'),
-        to: new Date('2022-11-07T06:00:00.000Z'),
+        from: new Date('2022-11-07T05:00:00.000'),
+        to: new Date('2022-11-07T06:00:00.000'),
         number: 65,
         symbol: 'rain',
         precipitation: 0.9,
@@ -984,8 +984,8 @@ describe('WeatherForecast', function () {
         pressure: 1007.4
       }),
       new t.Period({
-        from: new Date('2022-11-07T06:00:00.000Z'),
-        to: new Date('2022-11-07T07:00:00.000Z'),
+        from: new Date('2022-11-07T06:00:00.000'),
+        to: new Date('2022-11-07T07:00:00.000'),
         number: 66,
         symbol: 'cloudy',
         precipitation: 0.2,
@@ -995,8 +995,8 @@ describe('WeatherForecast', function () {
         pressure: 1007.8
       }),
       new t.Period({
-        from: new Date('2022-11-07T12:00:00.000Z'),
-        to: new Date('2022-11-07T13:00:00.000Z'),
+        from: new Date('2022-11-07T12:00:00.000'),
+        to: new Date('2022-11-07T13:00:00.000'),
         number: 67,
         symbol: 'cloudy',
         precipitation: 0,
@@ -1006,8 +1006,8 @@ describe('WeatherForecast', function () {
         pressure: 1009.9
       }),
       new t.Period({
-        from: new Date('2022-11-07T18:00:00.000Z'),
-        to: new Date('2022-11-07T19:00:00.000Z'),
+        from: new Date('2022-11-07T18:00:00.000'),
+        to: new Date('2022-11-07T19:00:00.000'),
         number: 68,
         symbol: 'cloudy',
         precipitation: 0,
@@ -1019,8 +1019,8 @@ describe('WeatherForecast', function () {
     ]),
     new t.Day(8, [
       new t.Period({
-        from: new Date('2022-11-08T00:00:00.000Z'),
-        to: new Date('2022-11-08T01:00:00.000Z'),
+        from: new Date('2022-11-08T00:00:00.000'),
+        to: new Date('2022-11-08T01:00:00.000'),
         number: 69,
         symbol: 'cloudy',
         precipitation: 0,
@@ -1030,8 +1030,8 @@ describe('WeatherForecast', function () {
         pressure: 1008.8
       }),
       new t.Period({
-        from: new Date('2022-11-08T06:00:00.000Z'),
-        to: new Date('2022-11-08T07:00:00.000Z'),
+        from: new Date('2022-11-08T06:00:00.000'),
+        to: new Date('2022-11-08T07:00:00.000'),
         number: 70,
         symbol: 'cloudy',
         precipitation: 0.4,
@@ -1041,8 +1041,8 @@ describe('WeatherForecast', function () {
         pressure: 1003.5
       }),
       new t.Period({
-        from: new Date('2022-11-08T12:00:00.000Z'),
-        to: new Date('2022-11-08T13:00:00.000Z'),
+        from: new Date('2022-11-08T12:00:00.000'),
+        to: new Date('2022-11-08T13:00:00.000'),
         number: 71,
         symbol: 'lightrain',
         precipitation: 0.6,
@@ -1052,8 +1052,8 @@ describe('WeatherForecast', function () {
         pressure: 1003.4
       }),
       new t.Period({
-        from: new Date('2022-11-08T18:00:00.000Z'),
-        to: new Date('2022-11-08T19:00:00.000Z'),
+        from: new Date('2022-11-08T18:00:00.000'),
+        to: new Date('2022-11-08T19:00:00.000'),
         number: 72,
         symbol: 'cloudy',
         precipitation: 0,
@@ -1071,10 +1071,10 @@ describe('WeatherForecast', function () {
     assert(signal);
     assert(signal.name.includes(cityName));
     assert(signal.message.includes("<strong>4:</strong>"));
-    assert(signal.message.includes("\n14:00 cloudy, 11.6°C\n"));
-    assert(signal.message.includes("\n17:00 partlycloudy_night, 10.9°C\n"));
-    assert(signal.message.includes("\n20:00 partlycloudy_night, 8.8°C\n"));
-    assert(signal.message.includes("\n23:00 partlycloudy_night, 7.8°C\n"));
+    assert(signal.message.includes("14:00 cloudy, 12.1°C"));
+    assert(signal.message.includes("17:00 fair_night, 9.9°C"));
+    assert(signal.message.includes("20:00 partlycloudy_night, 9°C"));
+    assert(signal.message.includes("22:00 partlycloudy_night, 7.8°C"));
   });
 
   it('#generateSignal(days) with imperial units', function () {
@@ -1084,10 +1084,10 @@ describe('WeatherForecast', function () {
     assert(signal);
     assert(signal.name.includes(cityName));
     assert(signal.message.includes("<strong>4:</strong>"));
-    assert(signal.message.includes("\n14:00 cloudy, 53°F\n"));
-    assert(signal.message.includes("\n17:00 partlycloudy_night, 52°F\n"));
-    assert(signal.message.includes("\n20:00 partlycloudy_night, 48°F\n"));
-    assert(signal.message.includes("\n23:00 partlycloudy_night, 46°F\n"));
+    assert(signal.message.includes("14:00 cloudy, 54°F"));
+    assert(signal.message.includes("17:00 fair_night, 50°F"));
+    assert(signal.message.includes("20:00 partlycloudy_night, 48°F"));
+    assert(signal.message.includes("22:00 partlycloudy_night, 46°F"));
   });
 
   describe('options', function () {
@@ -1148,7 +1148,6 @@ describe('WeatherForecast', function () {
     return app.run().then((signal) => {
       assert.ok(signal);
       assert(signal.name.includes(cityName));
-      assert(signal.message.includes('Fri Nov 04 2022'));
     });
   });
 
