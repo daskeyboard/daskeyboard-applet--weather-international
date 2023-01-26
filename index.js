@@ -1,10 +1,6 @@
+const got = require('got');
 const fs = require('fs');
-const {
-  parseString
-} = require('xml2js');
-const moment = require('moment');
 const readline = require('readline');
-const request = require('request-promise');
 const q = require('daskeyboard-applet');
 const logger = q.logger;
 
@@ -62,13 +58,12 @@ async function loadCities() {
  */
 function processCities(lines) {
   const options = [];
-  for (line of lines) {
+  for (const line of lines) {
     const values = line.split("\t");
-    const url = values[17].trim() || values[16].trim() || values[15].trim();
-    const urlParts = url.split('//')[1].split('/');
+    const url = values[16].trim();
     options.push({
       key: url,
-      value: `${values[3]}, ${urlParts[3].replace(/_/g, ' ')} (${values[10]})`,
+      value: `${values[3]}, ${values[15].replace(/_/g, ' ')} (${values[10]})`,
     })
   }
 
@@ -76,25 +71,12 @@ function processCities(lines) {
 }
 
 /**
- * Retrieve forecast XML from the service
+ * Retrieve forecast JSON from the service
  * @param {String} forecastUrl 
  */
 async function retrieveForecast(forecastUrl) {
   logger.info("Getting forecast via URL: " + forecastUrl);
-  return request.get({
-    url: forecastUrl,
-    json: false
-  }).then(async body => {
-    return new Promise((resolve, reject) => {
-      parseString(body, function (err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
-    });
-  });
+  return await got(forecastUrl).json();
 }
 
 /**
@@ -103,7 +85,6 @@ async function retrieveForecast(forecastUrl) {
 class Period {
   constructor({
     from,
-    to,
     number,
     symbol = {},
     precipitation = {},
@@ -114,7 +95,6 @@ class Period {
   }) {
 
     this.from = from;
-    this.to = to;
     this.number = number;
 
     this.symbol = symbol;
@@ -127,18 +107,22 @@ class Period {
 }
 
 Period.revive = function (json) {
-  const meta = json['$'];
+  let next = json.data.next_1_hours;
+  if (next === undefined) {
+    next = json.data.next_6_hours;
+  }
+  if (next === undefined) {
+    next = json.data.next_12_hours;
+  }
+  const details = json.data.instant.details;
   return new Period({
-    from: meta.from,
-    to: meta.to,
-    number: meta.period,
-
-    symbol: json.symbol[0]['$'],
-    precipitation: json.precipitation[0]['$'],
-    windDirection: json.windDirection[0]['$'],
-    windSpeed: json.windSpeed[0]['$'],
-    temperature: json.temperature[0]['$'],
-    pressure: json.pressure[0]['$'],
+    from: new Date(json.time),
+    symbol: next.summary.symbol_code,
+    precipitation: next.details.precipitation_amount,
+    windDirection: details.wind_from_direction,
+    windSpeed: details.wind_speed,
+    temperature: details.air_temperature,
+    pressure: details.air_pressure_at_sea_level
   });
 }
 
@@ -157,19 +141,21 @@ class Day {
  * @param {String} data 
  */
 function processForecast(data) {
-  const periods = data.weatherdata.forecast[0].tabular[0].time;
+  const periods = data.properties.timeseries;
   const days = [];
-  let currentDate = '';
+  let currentNumber = 1;
+  let currentDate = 0;
   let thisDay = null;
-  for (periodJson of periods) {
+  for (const periodJson of periods) {
     let period = Period.revive(periodJson);
-    let thisDate = period.from.split('T')[0];
+    period.number = currentNumber++;
+    let thisDate = period.from.getDate();
     if (thisDate !== currentDate) {
       currentDate = thisDate;
       if (thisDay) {
         days.push(thisDay);
       }
-      thisDay = new Day(thisDate, [period]);
+      thisDay = new Day(period.from, [period]);
     } else {
       thisDay.periods.push(period);
     }
@@ -177,6 +163,8 @@ function processForecast(data) {
     if (thisDay && thisDay.length) {
       days.push(thisDay)
     }
+
+    if (days.length >= 5) break;
   }
 
   return days;
@@ -187,39 +175,25 @@ function processForecast(data) {
  * @param {Day} day 
  */
 function choosePeriod(day) {
-  let periods = [...day.periods];
-  // strip the overnight period
-  if (periods.length === 4) {
-    periods = periods.slice(1);
+  const selectedPeriods = [];
+  const useEvening = day.periods[0].from.getHours() > 17;
+  for (const period of day.periods) {
+    // try to limit to 07.00 .. 18.00 hours
+    if (period.from.getHours() < 7) continue;
+    if (period.from.getHours() > 17 && !useEvening) break;
+    selectedPeriods.push(period);
   }
-
-  // strip the late night period
-  if (periods.length > 1) {
-    periods = periods.slice(0, periods.length - 1);
-  }
-
-  // if only one period, then we return it
-  if (periods.length === 1) {
-    return periods[0];
-  }
-
-  // return the period with more precipitation
-  return (periods[0].precipitation.value > periods[1].precipitation.value) ?
-    periods[0] : periods[1];
-}
-
-const periodNameMap = {
-  '0': 'Overnight',
-  '1': 'Morning',
-  '2': 'Afternoon',
-  '3': 'Evening',
+  // return the period with most precipitation
+  const rc = selectedPeriods.reduce((prev, current) => { return prev.precipitation > current.precipitation ? prev : current; });
+  logger.info(`${rc.from.getDate()}-${rc.from.getMonth()+1}-${rc.from.getFullYear()}: ${rc.symbol}`);
+  return rc;
 }
 
 function generatePeriodText(period, units) {
   const temperature = (units == Units.imperial) ?
-    Math.round(period.temperature.value * 1.8 + 32) + '°F' :
-    period.temperature.value + '°C';
-  return `${periodNameMap[period.number]}: ${period.symbol.name}, ${temperature}`;
+    Math.round(period.temperature * 1.8 + 32) + '°F' :
+    period.temperature + '°C';
+  return `${period.from.getHours().toString().padStart(2, '0')}:00 ${period.symbol}, ${temperature}`;
 }
 
 /**
@@ -227,7 +201,7 @@ function generatePeriodText(period, units) {
  * @param {Period} period 
  */
 function chooseColor(period) {
-  const text = period.symbol.name.toLowerCase();
+  const text = period.symbol.toLowerCase();
   if (text.includes('snow')) {
     return Colors.SNOW;
   } else if (text.includes('storm')) {
@@ -280,7 +254,7 @@ class WeatherForecast extends q.DesktopApp {
     const messages = [];
 
     for (let day of days) {
-      const dateMessage = `<div style="color: red;"><strong>${moment(day.date).format('dddd, MMMM Do')}:</strong></div>`;
+      const dateMessage = `<div style="color: red;"><strong>${day.date.toString()}:</strong></div>`;
       messages.push(dateMessage);
       messages.push(`<div>`);
       day.periods.forEach((period, index) => {
