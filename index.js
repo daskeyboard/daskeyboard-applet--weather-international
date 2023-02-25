@@ -2,7 +2,7 @@ const got = require('got');
 const fs = require('fs');
 const readline = require('readline');
 const q = require('daskeyboard-applet');
-const root_url = 'https://raw.githubusercontent.com/Kris-LIBIS/daskeyboard-applet--weather-international/master';
+const root_url = 'https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-international/master';
 const logger = q.logger;
 
 logger.info(`Timezone offset: ${new Date().getTimezoneOffset()}`);
