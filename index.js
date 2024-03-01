@@ -2,7 +2,10 @@ const got = require('got');
 const fs = require('fs');
 const readline = require('readline');
 const q = require('daskeyboard-applet');
+const root_url = 'https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-international/master';
 const logger = q.logger;
+
+logger.info(`Timezone offset: ${new Date().getTimezoneOffset()}`);
 
 const Colors = Object.freeze({
   CLEAR: '#FFFF00',
@@ -19,6 +22,17 @@ const Units = Object.freeze({
 });
 
 const MAX_SEARCH_RESULTS = 1000;
+
+function windArrow(direction) {
+  const directions = ['N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S_SE', 'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW'];
+
+  const split = 360.0 / 16;
+  direction += 360 + split / 2;
+  direction = direction % 360;
+
+  let w = Math.round(direction / split);
+  return `${directions[w]}`;
+}
 
 /**
  * Loads the weather cities from an installed text file
@@ -85,6 +99,7 @@ async function retrieveForecast(forecastUrl) {
 class Period {
   constructor({
     from,
+    endTime,
     number,
     symbol = {},
     precipitation = {},
@@ -95,6 +110,7 @@ class Period {
   }) {
 
     this.from = from;
+    this.endTime = endTime;
     this.number = number;
 
     this.symbol = symbol;
@@ -107,16 +123,21 @@ class Period {
 }
 
 Period.revive = function (json) {
+  let from = new Date(json.time);
+  let endTime = new Date(json.time);
   let next = json.data.next_1_hours;
   if (next === undefined) {
     next = json.data.next_6_hours;
+    endTime.setUTCHours(from.getUTCHours() + 6);
   }
   if (next === undefined) {
     next = json.data.next_12_hours;
+    endTime.setUTCHours(from.getUTCHours() + 12);
   }
   const details = json.data.instant.details;
   return new Period({
     from: new Date(json.time),
+    endTime: (endTime === from ? null : endTime),
     symbol: next.summary.symbol_code,
     precipitation: next.details.precipitation_amount,
     windDirection: details.wind_from_direction,
@@ -164,7 +185,7 @@ function processForecast(data) {
       days.push(thisDay)
     }
 
-    if (days.length >= 5) break;
+    if (days.length >= 8) break;
   }
 
   return days;
@@ -191,9 +212,16 @@ function choosePeriod(day) {
 
 function generatePeriodText(period, units) {
   const temperature = (units == Units.imperial) ?
-    Math.round(period.temperature * 1.8 + 32) + '°F' :
-    period.temperature + '°C';
-  return `${period.from.getHours().toString().padStart(2, '0')}:00 ${period.symbol}, ${temperature}`;
+    Math.round(period.temperature * 1.8 + 32) + ' °F' :
+    Math.round(period.temperature) + ' °C';
+    const text = `<tr>` +
+      `<td>${period.from.getHours().toString().padStart(2, '0')}${period.endTime.getHours() === period.from.getHours() ? '' : `-${period.endTime.getHours().toString().padStart(2, '0')}`}</td>` +
+      `<td><img src="${root_url}/assets/symbols/png/${period.symbol}.png" width="22" height="22"></td>` +
+      `<td>${temperature}</td>` +
+      `<td>${Math.round(period.windSpeed)} m/s ${windArrow(period.windDirection)}</td>` +
+      `</tr>`;
+    logger.info(text);
+    return text;
 }
 
 /**
@@ -231,7 +259,7 @@ class WeatherForecast extends q.DesktopApp {
     }).then(options => {
       // filter the cities if needed
       search = (search || '').trim();
-      search = unescape(search);
+      search = decodeURIComponent(search);
       if (search.length > 0) {
         return options.filter(option => {
           return option.value.toLowerCase().includes(search);
@@ -250,21 +278,22 @@ class WeatherForecast extends q.DesktopApp {
    * @param {Array<Day>} days
    */
   generateSignal(days) {
-    days = days.slice(0, this.getWidth());
     const messages = [];
 
     for (let day of days) {
-      const dateMessage = `<div style="color: red;"><strong>${day.date.toString()}:</strong></div>`;
+      const date_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const dateMessage = `<div style="color: red;"><strong>${day.date.toLocaleDateString("en-US", date_options)}:</strong></div>`;
       messages.push(dateMessage);
       messages.push(`<div>`);
-      day.periods.forEach((period, index) => {
+      messages.push(`<table width="100%"><tbody><tr><td><em>Time</em></td><td><em>Weather</em></td><td><em>Temp.</em></td><td><em>Wind</em></td></tr>`);
+      day.periods.forEach((period) => {
         messages.push(`${generatePeriodText(period, this.config.units)}`);
-        if (index !== day.periods.length - 1) {
-          messages.push('-');
-        }
       });
+      messages.push(`</tbody><table>`);
       messages.push(`</div></br>`);
     }
+
+    days = days.slice(0, this.getWidth());
 
     const signal = new q.Signal({
       points: [
@@ -326,6 +355,7 @@ module.exports = {
   processCities: processCities,
   processForecast: processForecast,
   retrieveForecast: retrieveForecast,
+  windArrow: windArrow
 }
 
 const applet = new WeatherForecast();
