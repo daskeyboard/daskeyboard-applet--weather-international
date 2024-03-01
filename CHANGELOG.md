@@ -1,5 +1,9 @@
 # Changelog Q Applet Weather Forecast
 
+## Version 2.1.1 - March 1, 2024
+
+The Das Keyboard Weather Applet has been updated to include enhanced signal messages with a week's forecast in a tabular format and weather icons, thanks to Kris-LIBIS's contributions
+
 ## Version 2.1.0 - November 3, 2022
 
 Re-factored to use the new JSON based api at yr.no instead of the deprecated XML api
